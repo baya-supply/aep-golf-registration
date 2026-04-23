@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEP Golf Day 2026 · Registration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --b-black:#111111;--b-charcoal:#1a1a1a;--b-dark:#222222;--b-card:#2a2a2a;
+  --b-border:#333333;--b-yellow:#F5C518;--b-gold:#C8A830;
+  --b-text:#f0f0f0;--b-muted:#999999;--b-subtle:#666666;
+}
+body{font-family:'Montserrat',sans-serif;background:var(--b-black);color:var(--b-text)}
+.app{max-width:680px;margin:0 auto;padding:0 0 3rem}
+.header{background:var(--b-black);border-bottom:2px solid var(--b-gold);padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.baya-wordmark{display:flex;flex-direction:column;align-items:center;gap:3px}
+.baya-wordmark .baya-text{font-weight:900;font-size:22px;color:white;letter-spacing:4px;text-transform:uppercase;line-height:1}
+.baya-wordmark .supply-row{display:flex;align-items:center;gap:6px;width:100%}
+.baya-wordmark .supply-line{flex:1;height:1px;background:var(--b-gold)}
+.baya-wordmark .supply-text{font-size:8px;font-weight:700;letter-spacing:4px;color:white;white-space:nowrap}
+.header-event{text-align:right}
+.header-event .ev-title{font-size:13px;font-weight:700;letter-spacing:1px;color:var(--b-text);text-transform:uppercase}
+.header-event .ev-sub{font-size:10px;color:var(--b-gold);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.hero{background:var(--b-charcoal);border-bottom:1px solid var(--b-border);padding:2rem 24px 1.75rem;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(200,168,48,0.15);color:var(--b-gold);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;border:1px solid rgba(200,168,48,0.3);margin-bottom:1rem}
+.hero h1{font-size:20px;font-weight:700;letter-spacing:1px;color:var(--b-text);text-transform:uppercase;margin-bottom:6px}
+.hero p{font-size:13px;color:var(--b-muted);line-height:1.7}
+.hero-meta{display:flex;justify-content:center;gap:1.5rem;margin-top:1.25rem;flex-wrap:wrap}
+.hero-meta span{font-size:12px;color:var(--b-muted);display:flex;align-items:center;gap:6px}
+.hero-meta span svg{stroke:var(--b-gold)}
+.section-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--b-gold);margin-bottom:10px;padding:0 24px}
+/* Pricing cards - clickable */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 24px;margin-bottom:2rem}
+.price-card{background:var(--b-card);border:1px solid var(--b-border);border-radius:8px;padding:1rem;cursor:pointer;transition:border-color 0.15s,background 0.15s;user-select:none}
+.price-card:hover{border-color:var(--b-subtle)}
+.price-card.selected{border-color:var(--b-gold);background:rgba(200,168,48,0.08)}
+.price-card.no-select{cursor:default}
+.price-card .plabel{font-size:11px;color:var(--b-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.price-card .amount{font-size:22px;font-weight:700;color:var(--b-text)}
+.price-card .gst{font-size:10px;color:var(--b-gold);font-weight:600;margin-left:4px}
+.price-card .sublabel{font-size:11px;color:var(--b-subtle);margin-top:3px}
+.form-card{background:var(--b-charcoal);border:1px solid var(--b-border);border-radius:8px;padding:1.25rem;margin:0 24px 1.25rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-row.full{grid-template-columns:1fr}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:11px;color:var(--b-muted);font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.field input,.field select,.field textarea{border:1px solid var(--b-border);border-radius:6px;background:var(--b-dark);color:var(--b-text);padding:0 12px;font-size:13px;font-family:'Montserrat',sans-serif;width:100%}
+.field input,.field select{height:38px}
+.field textarea{padding:10px 12px;resize:vertical;min-height:70px}
+.field input::placeholder,.field textarea::placeholder{color:var(--b-subtle)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--b-gold);box-shadow:0 0 0 2px rgba(200,168,48,0.2)}
+.field select option{background:var(--b-dark)}
+.player-block{border:1px solid var(--b-border);border-radius:6px;padding:1rem;margin-bottom:10px;background:var(--b-dark)}
+.player-block .player-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.player-label{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--b-gold)}
+.remove-btn{background:none;border:1px solid var(--b-border);color:var(--b-muted);cursor:pointer;font-size:11px;padding:3px 8px;border-radius:4px;font-family:'Montserrat',sans-serif}
+.remove-btn:hover{border-color:#c0392b;color:#e74c3c}
+.add-player-btn{width:100%;padding:11px;border:1px dashed var(--b-border);background:none;border-radius:6px;color:var(--b-muted);cursor:pointer;font-size:12px;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+.add-player-btn:hover{border-color:var(--b-gold);color:var(--b-gold);border-style:solid}
+.payment-toggle{display:flex;gap:8px;margin-bottom:1rem}
+.pay-opt{flex:1;padding:10px;border:1px solid var(--b-border);border-radius:6px;background:none;cursor:pointer;font-size:12px;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--b-muted)}
+.pay-opt.active{background:rgba(200,168,48,0.12);color:var(--b-gold);border-color:var(--b-gold)}
+.pay-detail{font-size:13px;color:var(--b-muted);line-height:1.9;padding:12px;background:var(--b-dark);border-radius:6px;border:1px solid var(--b-border)}
+.pay-detail strong{color:var(--b-text)}
+.pay-detail .note{font-size:11px;color:var(--b-subtle);margin-top:6px;display:block}
+.summary-box{background:var(--b-dark);border:1px solid var(--b-border);border-radius:8px;padding:1rem;margin:0 24px 1rem}
+.summary-row{display:flex;justify-content:space-between;font-size:13px;color:var(--b-muted);padding:4px 0}
+.summary-row.total{font-size:16px;font-weight:700;color:var(--b-text);border-top:1px solid var(--b-border);margin-top:8px;padding-top:10px}
+.summary-row.total span:last-child{color:var(--b-gold)}
+.submit-wrap{padding:0 24px}
+.submit-btn{width:100%;padding:14px;background:var(--b-gold);color:var(--b-black);border:none;border-radius:6px;font-size:14px;font-weight:700;font-family:'Montserrat',sans-serif;cursor:pointer;letter-spacing:2px;text-transform:uppercase;transition:background 0.15s}
+.submit-btn:hover:not(:disabled){background:var(--b-yellow)}
+.submit-btn:disabled{opacity:0.6;cursor:not-allowed}
+.success-screen{text-align:center;padding:3rem 24px;display:none}
+.success-icon{width:60px;height:60px;background:rgba(200,168,48,0.15);border:2px solid var(--b-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
+.success-screen h2{font-size:20px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--b-text);margin-bottom:8px}
+.success-screen p{font-size:13px;color:var(--b-muted);line-height:1.8}
+.ticket-ref{display:inline-block;background:rgba(200,168,48,0.1);border:1px solid var(--b-gold);color:var(--b-gold);padding:6px 20px;border-radius:20px;font-size:13px;font-weight:700;letter-spacing:2px;margin:1rem 0}
+.err{font-size:11px;color:#e74c3c;margin-top:3px;display:none}
+.error-banner{background:rgba(231,76,60,0.1);border:1px solid #e74c3c;border-radius:6px;padding:12px 16px;margin:0 24px 1rem;font-size:13px;color:#e74c3c;display:none}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(0,0,0,0.3);border-top-color:#000;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div id="form-view">
+    <div class="header">
+      <div class="baya-wordmark">
+        <div class="baya-text">BAYA</div>
+        <div class="supply-row"><div class="supply-line"></div><span class="supply-text">SUPPLY</span><div class="supply-line"></div></div>
+      </div>
+      <div class="header-event">
+        <div class="ev-title">AEP Golf Day</div>
+        <div class="ev-sub">22 May 2026 · Adelaide</div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-badge">Registrations open</div>
+      <h1>AEP 2026 Networking Golf Day</h1>
+      <p>Register your team for a great day of golf, networking, and industry connections.</p>
+      <div class="hero-meta">
+        <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 2v2M11 2v2M2 7h12"/></svg>Thursday, 22 May 2026</span>
+        <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke-width="1.5"><path d="M8 2C5.8 2 4 3.8 4 6c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z"/><circle cx="8" cy="6" r="1.5"/></svg>Mount Osmond Golf Club, Adelaide Hills</span>
+        <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2 2"/></svg>Teams of up to 4 players</span>
+      </div>
+    </div>
+
+    <div style="height:1.75rem"></div>
+
+    <div class="section-label">Registration type — select one</div>
+    <div class="pricing-grid">
+      <div class="price-card selected" id="card-team" onclick="selectType('team')">
+        <div class="plabel">Team (4)</div>
+        <div class="amount">$600<span class="gst">+GST</span></div>
+        <div class="sublabel">$150 per player</div>
+      </div>
+      <div class="price-card" id="card-individual" onclick="selectType('individual')">
+        <div class="plabel">Individual</div>
+        <div class="amount">$150<span class="gst">+GST</span></div>
+        <div class="sublabel">Per player</div>
+      </div>
+      <div class="price-card no-select" id="card-sponsorship">
+        <div class="plabel">Sponsorship</div>
+        <div class="amount">POA</div>
+        <div class="sublabel">Contact us</div>
+      </div>
+    </div>
+
+    <div class="section-label">Team & captain details</div>
+    <div class="form-card">
+      <div class="form-row">
+        <div class="field">
+          <label>Team name *</label>
+          <input type="text" id="team-name" placeholder="e.g. Baya Bogeys">
+          <div class="err" id="err-team-name">Required</div>
+        </div>
+        <div class="field">
+          <label>Company *</label>
+          <input type="text" id="company" placeholder="Company name">
+          <div class="err" id="err-company">Required</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Captain name *</label>
+          <input type="text" id="captain-name" placeholder="Full name">
+          <div class="err" id="err-captain-name">Required</div>
+        </div>
+        <div class="field">
+          <label>Captain email *</label>
+          <input type="email" id="captain-email" placeholder="email@example.com">
+          <div class="err" id="err-captain-email">Valid email required</div>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="field">
+          <label>Captain phone</label>
+          <input type="tel" id="captain-phone" placeholder="04xx xxx xxx">
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="field">
+          <label>Dietary requirements / notes</label>
+          <textarea id="dietary" placeholder="Any dietary requirements or special requests for your team"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Player details</div>
+    <div class="form-card">
+      <div id="players-container"></div>
+      <button type="button" class="add-player-btn" id="add-player-btn" onclick="addPlayer()">+ Add player (0/4)</button>
+    </div>
+
+    <div class="section-label">Payment method</div>
+    <div class="form-card">
+      <div class="payment-toggle">
+        <button type="button" class="pay-opt active" onclick="setPayment('eft')" id="pay-eft">Bank transfer (EFT)</button>
+        <button type="button" class="pay-opt" onclick="setPayment('invoice')" id="pay-invoice">Invoice me</button>
+      </div>
+      <div id="pay-detail-eft" class="pay-detail">
+        <strong>Bank transfer details</strong><br>
+        Account name: AEP Events<br>
+        BSB: 062-692 &nbsp;·&nbsp; Account: 480 489 658<br>
+        Reference: <em>Your team name</em>
+        <span class="note">Payment due 14 days prior to the event. All amounts include GST.</span>
+      </div>
+      <div id="pay-detail-invoice" class="pay-detail" style="display:none">
+        An invoice will be emailed to your captain's address within 2 business days.
+        <span class="note">Payment terms: 14 days. All amounts include GST.</span>
+      </div>
+    </div>
+
+    <div class="section-label">Registration summary</div>
+    <div class="summary-box">
+      <div class="summary-row"><span>Registration type</span><span id="sum-type">Team (4)</span></div>
+      <div class="summary-row"><span>Players registered</span><span id="sum-players">0</span></div>
+      <div class="summary-row"><span>Fee per player (ex GST)</span><span>$150.00</span></div>
+      <div class="summary-row"><span>GST (10%)</span><span id="sum-gst">$0.00</span></div>
+      <div class="summary-row total"><span>Total (inc GST)</span><span id="sum-total">$0.00</span></div>
+    </div>
+
+    <div class="error-banner" id="error-banner">Something went wrong. Please try again or contact us directly.</div>
+    <div class="submit-wrap">
+      <button type="button" class="submit-btn" id="submit-btn" onclick="submitForm()">Complete registration →</button>
+    </div>
+  </div>
+
+  <div class="success-screen" id="success-view">
+    <div style="padding:16px 24px;border-bottom:1px solid var(--b-border);display:flex;align-items:center;justify-content:center;margin-bottom:2rem">
+      <div class="baya-wordmark">
+        <div class="baya-text">BAYA</div>
+        <div class="supply-row"><div class="supply-line"></div><span class="supply-text">SUPPLY</span><div class="supply-line"></div></div>
+      </div>
+    </div>
+    <div class="success-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C8A830" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+    </div>
+    <h2>Registration confirmed!</h2>
+    <p>Thanks for registering for the AEP 2026 Networking Golf Day.</p>
+    <div class="ticket-ref" id="ticket-ref">Ref: AEP-2026-0001</div>
+    <p style="margin-top:8px;font-size:13px;color:var(--b-muted)">See you on the course at<br><strong style="color:var(--b-text)">Mount Osmond Golf Club · 22 May 2026</strong></p>
+    <div style="margin-top:2rem">
+      <button type="button" class="submit-btn" style="max-width:260px" onclick="resetForm()">Register another team →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// State
+let players = [];
+let playerCount = 0;
+let paymentMethod = 'eft';
+let registrationType = 'team';
+
+// --- Registration type selection ---
+function selectType(type) {
+  registrationType = type;
+  ['team','individual'].forEach(t => {
+    document.getElementById('card-' + t).classList.toggle('selected', t === type);
+  });
+  const typeLabels = { team: 'Team (4)', individual: 'Individual' };
+  document.getElementById('sum-type').textContent = typeLabels[type] || type;
+}
+
+// --- Players ---
+// Save current player field values before re-render
+function savePlayerData() {
+  const data = {};
+  players.forEach(id => {
+    data[id] = {
+      name: document.getElementById('p' + id + '-name')?.value || '',
+      email: document.getElementById('p' + id + '-email')?.value || '',
+      handicap: document.getElementById('p' + id + '-hcp')?.value || '',
+      shirt: document.getElementById('p' + id + '-shirt')?.value || '',
+    };
+  });
+  return data;
+}
+
+function addPlayer() {
+  if (players.length >= 4) return;
+  const saved = savePlayerData();
+  playerCount++;
+  players.push(playerCount);
+  renderPlayers(saved);
+  updateSummary();
+}
+
+function removePlayer(id) {
+  const saved = savePlayerData();
+  players = players.filter(p => p !== id);
+  renderPlayers(saved);
+  updateSummary();
+}
+
+function renderPlayers(saved) {
+  saved = saved || savePlayerData();
+  const c = document.getElementById('players-container');
+  c.innerHTML = '';
+  players.forEach((id, idx) => {
+    const isC = idx === 0;
+    const s = saved[id] || {};
+    const d = document.createElement('div');
+    d.className = 'player-block';
+    d.innerHTML = `
+      <div class="player-header">
+        <span class="player-label">Player ${idx + 1}${isC ? ' · Captain' : ''}</span>
+        ${!isC ? `<button type="button" class="remove-btn" onclick="removePlayer(${id})">Remove</button>` : ''}
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Full name</label><input type="text" id="p${id}-name" placeholder="Full name" value="${s.name || ''}"></div>
+        <div class="field"><label>Email</label><input type="email" id="p${id}-email" placeholder="email@example.com" value="${s.email || ''}"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Handicap</label><input type="number" id="p${id}-hcp" placeholder="e.g. 18" min="0" max="54" value="${s.handicap || ''}"></div>
+        <div class="field"><label>Shirt size</label>
+          <select id="p${id}-shirt">
+            <option value="">Select</option>
+            ${['XS','S','M','L','XL','2XL'].map(sz => `<option${s.shirt === sz ? ' selected' : ''}>${sz}</option>`).join('')}
+          </select>
+        </div>
+      </div>`;
+    c.appendChild(d);
+  });
+  const btn = document.getElementById('add-player-btn');
+  btn.style.display = players.length >= 4 ? 'none' : 'block';
+  btn.textContent = `+ Add player (${players.length}/4)`;
+}
+
+function updateSummary() {
+  const n = players.length;
+  const ex = n * 150;
+  const gst = ex * 0.1;
+  const total = ex + gst;
+  document.getElementById('sum-players').textContent = n;
+  document.getElementById('sum-gst').textContent = '$' + gst.toFixed(2);
+  document.getElementById('sum-total').textContent = '$' + total.toFixed(2);
+}
+
+function setPayment(m) {
+  paymentMethod = m;
+  ['eft','invoice'].forEach(x => {
+    document.getElementById('pay-' + x).className = 'pay-opt' + (x === m ? ' active' : '');
+    document.getElementById('pay-detail-' + x).style.display = x === m ? 'block' : 'none';
+  });
+}
+
+function validateEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+function showErr(id, show) {
+  const el = document.getElementById('err-' + id);
+  if (el) el.style.display = show ? 'block' : 'none';
+  const inp = document.getElementById(id);
+  if (inp) inp.style.borderColor = show ? '#e74c3c' : '';
+}
+
+async function submitForm() {
+  let valid = true;
+  ['team-name','company','captain-name'].forEach(id => {
+    const empty = !document.getElementById(id).value.trim();
+    showErr(id, empty);
+    if (empty) valid = false;
+  });
+  const em = document.getElementById('captain-email').value.trim();
+  if (!em || !validateEmail(em)) { showErr('captain-email', true); valid = false; }
+  else showErr('captain-email', false);
+  if (players.length === 0) { alert('Please add at least one player.'); valid = false; }
+  if (!valid) return;
+
+  const playerData = players.map((id, idx) => ({
+    name: document.getElementById('p' + id + '-name').value.trim(),
+    email: document.getElementById('p' + id + '-email').value.trim(),
+    handicap: document.getElementById('p' + id + '-hcp').value.trim(),
+    shirt: document.getElementById('p' + id + '-shirt').value,
+    isCaptain: idx === 0
+  }));
+
+  const payload = {
+    teamName: document.getElementById('team-name').value.trim(),
+    company: document.getElementById('company').value.trim(),
+    captainName: document.getElementById('captain-name').value.trim(),
+    captainEmail: em,
+    captainPhone: document.getElementById('captain-phone').value.trim(),
+    dietary: document.getElementById('dietary').value.trim(),
+    paymentMethod,
+    registrationType,
+    players: playerData,
+    playerCount: players.length,
+    totalExGST: players.length * 150,
+    totalIncGST: players.length * 165,
+    submittedAt: new Date().toISOString()
+  };
+
+  const btn = document.getElementById('submit-btn');
+  const banner = document.getElementById('error-banner');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Submitting...';
+  banner.style.display = 'none';
+
+  try {
+    const res = await fetch('/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Server error');
+    document.getElementById('ticket-ref').textContent = 'Ref: ' + data.ref;
+    document.getElementById('form-view').style.display = 'none';
+    document.getElementById('success-view').style.display = 'block';
+    window.scrollTo(0, 0);
+  } catch (e) {
+    banner.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Complete registration →';
+  }
+}
+
+function resetForm() {
+  players = []; playerCount = 0;
+  document.getElementById('form-view').style.display = 'block';
+  document.getElementById('success-view').style.display = 'none';
+  ['team-name','company','captain-name','captain-email','captain-phone'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('dietary').value = '';
+  selectType('team');
+  renderPlayers({});
+  updateSummary();
+  setPayment('eft');
+  window.scrollTo(0, 0);
+}
+
+// Init
+addPlayer();
+</script>
+</body>
+</html>
