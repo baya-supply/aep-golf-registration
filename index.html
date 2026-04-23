@@ -37,7 +37,19 @@ body{font-family:'Montserrat',sans-serif;background:var(--b-black);color:var(--b
 .price-card{background:var(--b-card);border:1px solid var(--b-border);border-radius:8px;padding:1rem;cursor:pointer;transition:border-color 0.15s,background 0.15s;user-select:none}
 .price-card:hover{border-color:var(--b-subtle)}
 .price-card.selected{border-color:var(--b-gold);background:rgba(200,168,48,0.08)}
-.price-card.no-select{cursor:default}
+.price-card.no-select{cursor:pointer}
+/* Sponsorship modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity 0.2s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--b-charcoal);border:1px solid var(--b-gold);border-radius:12px;padding:2rem;max-width:380px;width:100%;text-align:center;transform:translateY(10px);transition:transform 0.2s}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-icon{width:48px;height:48px;background:rgba(200,168,48,0.12);border:1px solid rgba(200,168,48,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
+.modal h3{font-size:16px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--b-text);margin-bottom:8px}
+.modal p{font-size:13px;color:var(--b-muted);line-height:1.8;margin-bottom:1.25rem}
+.modal-email{display:inline-block;color:var(--b-gold);font-weight:700;font-size:13px;letter-spacing:0.5px;text-decoration:none;border-bottom:1px solid rgba(200,168,48,0.3);padding-bottom:2px}
+.modal-email:hover{border-bottom-color:var(--b-gold)}
+.modal-close{margin-top:1.5rem;width:100%;padding:11px;background:none;border:1px solid var(--b-border);border-radius:6px;color:var(--b-muted);cursor:pointer;font-size:12px;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.modal-close:hover{border-color:var(--b-gold);color:var(--b-gold)}
 .price-card .plabel{font-size:11px;color:var(--b-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
 .price-card .amount{font-size:22px;font-weight:700;color:var(--b-text)}
 .price-card .gst{font-size:10px;color:var(--b-gold);font-weight:600;margin-left:4px}
@@ -124,7 +136,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--b-black);color:var(--b
         <div class="amount">$150<span class="gst">+GST</span></div>
         <div class="sublabel">Per player</div>
       </div>
-      <div class="price-card no-select" id="card-sponsorship">
+      <div class="price-card no-select" id="card-sponsorship" onclick="openSponsorModal()">
         <div class="plabel">Sponsorship</div>
         <div class="amount">POA</div>
         <div class="sublabel">Contact us</div>
@@ -417,8 +429,32 @@ function resetForm() {
   window.scrollTo(0, 0);
 }
 
+
+function openSponsorModal() {
+  document.getElementById('sponsor-modal').classList.add('open');
+}
+function closeSponsorModal(e) {
+  if (!e || e.target === document.getElementById('sponsor-modal')) {
+    document.getElementById('sponsor-modal').classList.remove('open');
+  }
+}
+
 // Init
 addPlayer();
 </script>
+
+<!-- Sponsorship modal -->
+<div class="modal-overlay" id="sponsor-modal" onclick="closeSponsorModal(event)">
+  <div class="modal">
+    <div class="modal-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8A830" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </div>
+    <h3>Sponsorship enquiries</h3>
+    <p>We are looking forward to chatting.<br>Please reach out and we'll be in touch shortly.</p>
+    <a class="modal-email" href="mailto:carter@bayasupply.com.au">carter@bayasupply.com.au</a>
+    <button class="modal-close" onclick="closeSponsorModal()">Close</button>
+  </div>
+</div>
+
 </body>
 </html>
