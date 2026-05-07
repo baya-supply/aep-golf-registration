@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  const ref = 'AEP-2026-' + String(Math.floor(Math.random() * 9000) + 1000);
+  const ref = 'AWC-2026-' + String(Math.floor(Math.random() * 9000) + 1000);
   const submittedDate = new Date(submittedAt).toLocaleString('en-AU', {
     timeZone: 'Australia/Brisbane',
     dateStyle: 'short',
