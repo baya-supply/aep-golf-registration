@@ -5,7 +5,7 @@ export default async function handler(req, res) {
 
   const {
     teamName, company, captainName, captainEmail, captainPhone,
-    dietary, paymentMethod, registrationType, players, playerCount,
+    dietary, paymentMethod, registrationType, sponsorName, players, playerCount,
     totalExGST, totalIncGST, submittedAt
   } = req.body;
 
@@ -13,7 +13,10 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  const ref = 'AWC-2026-' + String(Math.floor(Math.random() * 9000) + 1000);
+  const isSponsor = registrationType === 'sponsorship';
+  const refPrefix = isSponsor ? 'AWC-2026-SPONSOR-' : 'AWC-2026-';
+  const ref = refPrefix + String(Math.floor(Math.random() * 9000) + 1000);
+
   const submittedDate = new Date(submittedAt).toLocaleString('en-AU', {
     timeZone: 'Australia/Brisbane',
     dateStyle: 'short',
@@ -43,10 +46,11 @@ export default async function handler(req, res) {
             'Captain Email': captainEmail,
             'Captain Phone': captainPhone || '',
             'Players': playerCount,
-            'Ex GST': totalExGST,
-            'Inc GST': totalIncGST,
-            'Payment Method': paymentMethod === 'eft' ? 'Bank Transfer (EFT)' : 'Invoice',
+            'Ex GST': isSponsor ? 0 : totalExGST,
+            'Inc GST': isSponsor ? 0 : totalIncGST,
+            'Payment Method': isSponsor ? 'Sponsorship' : (paymentMethod === 'eft' ? 'Bank Transfer (EFT)' : 'Invoice'),
             'Registration Type': registrationType,
+            'Sponsor Name': sponsorName || '',
             'Dietary / Notes': dietary || '',
             'Player Details': playerSummary,
           }
