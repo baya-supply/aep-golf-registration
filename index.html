@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AEP Golf Day 2026 · Registration</title>
+<title>AWC Golf Day 2026 · Registration</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
@@ -106,14 +106,14 @@ body{font-family:'Montserrat',sans-serif;background:var(--b-black);color:var(--b
         <div class="supply-row"><div class="supply-line"></div><span class="supply-text">SUPPLY</span><div class="supply-line"></div></div>
       </div>
       <div class="header-event">
-        <div class="ev-title">AEP Golf Day</div>
+        <div class="ev-title">AWC Golf Day</div>
         <div class="ev-sub">22 May 2026 · Adelaide</div>
       </div>
     </div>
 
     <div class="hero">
       <div class="hero-badge">Registrations open</div>
-      <h1>AEP 2026 Networking Golf Day</h1>
+      <h1>AWC 2026 Networking Golf Day</h1>
       <p>Register your team for a great day of golf, networking, and industry connections.</p>
       <div class="hero-meta">
         <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 2v2M11 2v2M2 7h12"/></svg>Thursday, 22 May 2026</span>
@@ -128,12 +128,12 @@ body{font-family:'Montserrat',sans-serif;background:var(--b-black);color:var(--b
     <div class="pricing-grid">
       <div class="price-card selected" id="card-team" onclick="selectType('team')">
         <div class="plabel">Team (4)</div>
-        <div class="amount">$600<span class="gst">+GST</span></div>
+        <div class="amount">$600</div>
         <div class="sublabel">$150 per player</div>
       </div>
       <div class="price-card" id="card-individual" onclick="selectType('individual')">
         <div class="plabel">Individual</div>
-        <div class="amount">$150<span class="gst">+GST</span></div>
+        <div class="amount">$150</div>
         <div class="sublabel">Per player</div>
       </div>
       <div class="price-card no-select" id="card-sponsorship" onclick="openSponsorModal()">
@@ -197,14 +197,14 @@ body{font-family:'Montserrat',sans-serif;background:var(--b-black);color:var(--b
       </div>
       <div id="pay-detail-eft" class="pay-detail">
         <strong>Bank transfer details</strong><br>
-        Account name: AEP Events<br>
+        Account name: AWC Events<br>
         BSB: 065-108 &nbsp;·&nbsp; Account: 1054 7649<br>
         Reference: <em>Your team name</em>
-        <span class="note">Payment due 14 days prior to the event. All amounts include GST.</span>
+        <span class="note">Payment due 14 days prior to the event.</span>
       </div>
       <div id="pay-detail-invoice" class="pay-detail" style="display:none">
         An invoice will be emailed to your captain's address within 2 business days.
-        <span class="note">Payment terms: 14 days. All amounts include GST.</span>
+        <span class="note">Payment terms: 14 days.</span>
       </div>
     </div>
 
@@ -212,9 +212,8 @@ body{font-family:'Montserrat',sans-serif;background:var(--b-black);color:var(--b
     <div class="summary-box">
       <div class="summary-row"><span>Registration type</span><span id="sum-type">Team (4)</span></div>
       <div class="summary-row"><span>Players registered</span><span id="sum-players">0</span></div>
-      <div class="summary-row"><span>Fee per player (ex GST)</span><span>$150.00</span></div>
-      <div class="summary-row"><span>GST (10%)</span><span id="sum-gst">$0.00</span></div>
-      <div class="summary-row total"><span>Total (inc GST)</span><span id="sum-total">$0.00</span></div>
+      <div class="summary-row"><span>Fee per player</span><span>$150.00</span></div>
+      <div class="summary-row total"><span>Total</span><span id="sum-total">$0.00</span></div>
     </div>
 
     <div class="error-banner" id="error-banner">Something went wrong. Please try again or contact us directly.</div>
@@ -234,8 +233,8 @@ body{font-family:'Montserrat',sans-serif;background:var(--b-black);color:var(--b
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C8A830" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
     </div>
     <h2>Registration confirmed!</h2>
-    <p>Thanks for registering for the AEP 2026 Networking Golf Day.</p>
-    <div class="ticket-ref" id="ticket-ref">Ref: AEP-2026-0001</div>
+    <p>Thanks for registering for the AWC 2026 Networking Golf Day.</p>
+    <div class="ticket-ref" id="ticket-ref">Ref: AWC-2026-0001</div>
     <p style="margin-top:8px;font-size:13px;color:var(--b-muted)">See you on the course at<br><strong style="color:var(--b-text)">Mount Osmond Golf Club · 22 May 2026</strong></p>
     <div style="margin-top:2rem">
       <button type="button" class="submit-btn" style="max-width:260px" onclick="resetForm()">Register another team →</button>
@@ -327,11 +326,8 @@ function renderPlayers(saved) {
 
 function updateSummary() {
   const n = players.length;
-  const ex = n * 150;
-  const gst = ex * 0.1;
-  const total = ex + gst;
+  const total = n * 150;
   document.getElementById('sum-players').textContent = n;
-  document.getElementById('sum-gst').textContent = '$' + gst.toFixed(2);
   document.getElementById('sum-total').textContent = '$' + total.toFixed(2);
 }
 
@@ -385,7 +381,7 @@ async function submitForm() {
     players: playerData,
     playerCount: players.length,
     totalExGST: players.length * 150,
-    totalIncGST: players.length * 165,
+    totalIncGST: players.length * 150,
     submittedAt: new Date().toISOString()
   };
 
